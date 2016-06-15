@@ -9,7 +9,6 @@ Project Goals
 The goal of this project is to have a functional application which allows our internal team to identify themselves, suggest places to eat to the team, and which allows team members to rate a restaurant up or down based on their past experiences. In addition, users should be able to leave comments about a location.
 
 Project Requirements
-
 1. A user should be able to identify themselves so other team members know who made a suggestion, who rated, and who left a comment.
 2. A restaurant should have the ability to be rated (thumbs up or thumbs down), and a rating summary should be visible to users.
 3. A restaurant should have the ability to be commented on, and comments should be visible to users.
