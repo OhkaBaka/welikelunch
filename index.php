@@ -13,11 +13,13 @@
 						padding-top: 50px;
 						padding-bottom: 20px;
 				}
+				legend { border-width: 0px; }
 		</style>
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/main.css">
 
 		<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -32,15 +34,7 @@
 					<a class="navbar-brand" href="#">We Like Lunch</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
-					<form class="navbar-form navbar-right" role="form">
-						<div class="form-group">
-							<input type="text" placeholder="Email" class="form-control">
-						</div>
-						<div class="form-group">
-							<input type="password" placeholder="Password" class="form-control">
-						</div>
-						<button type="submit" class="btn btn-success">Sign in</button>
-					</form>
+
 				</div><!--/.navbar-collapse -->
 			</div>
 		</nav>
@@ -48,7 +42,7 @@
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Lunch Tracking Thingee</h1>
+				<h1>WeLikeLunch</h1>
 				<p>Display graph of restaurants here using Google visualizations?</p>
 			</div>
 		</div>
@@ -57,82 +51,197 @@
 			<!-- Example row of columns -->
 			<div class="row">
 				<div class="col-md-6">
-					<div class="tab" style="display:none" >
-						<form class="form-horizontal">
-							<fieldset>
 
-								<!-- Form Name -->
-								<legend>Create Diner</legend>
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#review">Review Eatery</a></li>
+						<li><a data-toggle="tab" href="#diner">Add Diner</a></li>
+						<li><a data-toggle="tab" href="#eatery">Add Eatery</a></li>
+					</ul>
 
-								<!-- Text input-->
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="name">Name</label>	
-									<div class="col-md-4">
-									<input id="name" name="name" type="text" placeholder="NomNomNom" class="form-control input-md" required="">
-										
+					<div class="tab-content">
+						<div id="review" class="tab-pane fade in active">
+							<form class="form-horizontal" >
+								<fieldset>
+
+									<!-- Form Name -->
+									<legend></legend>
+
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="email">Email</label>	
+										<div class="col-md-5">
+											<input id="email" name="email" type="text" placeholder="someone@poolsupplyworld.com" class="form-control input-md" required="">
+											
+										</div>
 									</div>
-								</div>
 
-								<!-- Text input-->
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="email">Email Address</label>	
-									<div class="col-md-4">
-									<input id="email" name="email" type="text" placeholder="someone@poolsupplyworld.com" class="form-control input-md" required="">
-										
+									<!-- Password input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="pass">Password</label>
+										<div class="col-md-5">
+											<input id="pass" name="pass" type="password" placeholder="********" class="form-control input-md" required="">
+										</div>
 									</div>
-								</div>
 
-								<!-- Password input-->
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="pass1">Password</label>
-									<div class="col-md-4">
-										<input id="pass1" name="pass1" type="password" placeholder="" class="form-control input-md">
-										
+									<!-- Button (Double) -->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="thumbsup">Rating</label>
+										<div class="col-md-8">
+											<button id="thumbsup" name="thumbsup" class="btn btn-success">ThumbsUp</button>
+											<button id="thumbsdown" name="thumbsdown" class="btn btn-danger">ThumbsDown</button>
+										</div>
 									</div>
-								</div>
 
-								<!-- Password input-->
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="pass2">Re-Enter Password</label>
-									<div class="col-md-4">
-										<input id="pass2" name="pass2" type="password" placeholder="" class="form-control input-md">
-										
+									<!-- Textarea -->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="comment">Comment</label>
+										<div class="col-md-5">										 
+											<textarea class="form-control" id="comment" name="comment"></textarea>
+										</div>
 									</div>
-								</div>
 
-								<!-- Button -->
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="submit"></label>
-									<div class="col-md-4">
-										<button id="submit" name="submit" class="btn btn-primary">Create</button>
+									<!-- Button -->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="add_comment"></label>
+										<div class="col-md-5">
+											<button id="add_comment" name="add_comment" class="btn btn-primary">Add Comment</button>
+										</div>
 									</div>
-								</div>
 
-							</fieldset>
-						</form>
-					</div>
-					<div>
-						<h2>Heading</h2>
-						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-						<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+								</fieldset>
+							</form>
+						</div>
+						<div id="diner" class="tab-pane fade">
+							<form class="form-horizontal">
+								<fieldset>
+
+									<!-- Form Name -->
+									<legend></legend>
+
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="name">Name</label>	
+										<div class="col-md-5">
+										<input id="name" name="name" type="text" placeholder="NomNomNom" class="form-control input-md" required="">
+											
+										</div>
+									</div>
+
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="email">Email Address</label>	
+										<div class="col-md-5">
+										<input id="email" name="email" type="text" placeholder="someone@poolsupplyworld.com" class="form-control input-md" required="">
+											
+										</div>
+									</div>
+
+									<!-- Password input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="pass1">Password</label>
+										<div class="col-md-5">
+											<input id="pass1" name="pass1" type="password" placeholder="" class="form-control input-md">
+											
+										</div>
+									</div>
+
+									<!-- Password input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="pass2">Re-Enter Password</label>
+										<div class="col-md-5">
+											<input id="pass2" name="pass2" type="password" placeholder="" class="form-control input-md">
+											
+										</div>
+									</div>
+
+									<!-- Button -->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="submit"></label>
+										<div class="col-md-5">
+											<button id="submit" name="submit" class="btn btn-primary">Create</button>
+										</div>
+									</div>
+
+								</fieldset>
+							</form>
+						</div>
+						<div id="eatery" class="tab-pane fade">
+
+							<form class="form-horizontal">
+								<fieldset>
+
+									<!-- Form Name -->
+									<legend></legend>
+
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="name">Eatery Name</label>	
+										<div class="col-md-5">
+										<input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+											
+										</div>
+									</div>
+
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="address">Address</label>	
+										<div class="col-md-5">
+										<input id="address" name="address" type="text" placeholder="" class="form-control input-md" required="">
+											
+										</div>
+									</div>
+
+									<!-- Button -->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="create"></label>
+										<div class="col-md-5">
+											<button id="create" name="create" class="btn btn-primary">Create</button>
+										</div>
+									</div>
+
+								</fieldset>
+							</form>
+						</div>
+
 					</div>
 				</div>
 				<div class="col-md-6">
-					<h2>Heading</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-			 </div>
+					<div class="table-responsive">
+						<table class="table" style="table-layout:fixed; margin-bottom:0;">
+							<thead>
+								<tr>
+									<th>Eatery</th>
+									<th>Address</th>
+									<th>Map</th>
+									<th>Up<br>Votes</th>
+									<th>Down<br>Votes</th>
+								</tr>
+							</thead>
+						</table>
+						<div id="eatery_list">
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<hr>
 
 			<footer>
-				<p>&copy; Company 2015</p>
+				<p>&copy; 2016</p>
 			</footer>
 		</div> <!-- /container -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 		<script src="js/vendor/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
+		<script>
+			function getEateryList(){
+				$( "#eatery_list" ).load( "./api/get_list.php");
+			}
+			$( function(){
+				getEateryList();
+			});
+		</script>
+
 	</body>
 </html>
