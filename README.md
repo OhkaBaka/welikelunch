@@ -44,3 +44,6 @@ Session 4b:
 			- Failed: Invalid domain
 		- /welikelunch/api/?func=add_diner&email=ctrulove@poolsupplyworld.com&name=robert'); DROP TABLE students;&pass1=ocelot&pass2=ocelot
 			-Failed: Invalid chars in name
+
+Session 5a
+	Completed some more queries
