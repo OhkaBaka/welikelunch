@@ -1,4 +1,4 @@
-welikelunch
+welikelunch Project Log
 Christopher TruLove
 
 Session 1:
@@ -30,20 +30,17 @@ Session 4a:
 Session 4b:
 	Built some more query logic.
 	Separated the query logic from the control logic (good developer, have a cookie)
-	Testing the AddDiner logic
-		Testy bits (I won't do this for every function, but these are the various tests I ran)
-		- /welikelunch/api/?func=add_diner&email=ctrulove@poolsupplyworld.com&name=Christopher&pass1=ocelot&pass2=ocelot
-			- Passed
-		- /welikelunch/api/?func=add_diner&email=ctrulove@poolsupplyworld.com&name=Christopher&pass1=ocelot&pass2=ocelot
-			- Failed: Duplicate	
-		- /welikelunch/api/?func=add_diner&email=robert'); DROP TABLE students;@poolsupplyworld.com&name=Christopher&pass1=ocelot&pass2=ocelot
-			- Failed: Invalid email
-		- /welikelunch/api/?func=add_diner&email=ctrulove@poolsupplyworld.com&name=Christopher&pass1=ocelot&pass2=goat
-			- Failed: Mismatched password	
-		- /welikelunch/api/?func=add_diner&email=bob@gravystore.com&name=Bob&pass1=ocelot&pass2=ocelot
-			- Failed: Invalid domain
-		- /welikelunch/api/?func=add_diner&email=ctrulove@poolsupplyworld.com&name=robert'); DROP TABLE students;&pass1=ocelot&pass2=ocelot
-			-Failed: Invalid chars in name
+	Tested the AddDiner logic manually
 
 Session 5a
-	Completed some more queries
+	Completed some more (potentially "all") of the queries
+
+Session 5b
+	Watched Orange is the New Black instead of spending that time testing queries... possibly a bad idea.
+
+Session 6 (Saturday Morning)
+	Freaked out when my queries were missing... turns out I updated the code with the copy and pasted gmail.
+	In lieu of installing a test framework I'm going to build in a few tests I can periodically verify. Cowboy Unit Testing... I'm not ashamed.
+	I didn't expect the testing of this to go so long, but I'm very satisfied with the results, the test setups helped me validate much and fix even more.  Moving on to build logic.
+
+Session 7 (Saturday Afternoon)

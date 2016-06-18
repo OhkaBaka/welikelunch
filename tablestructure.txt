@@ -13,7 +13,7 @@ CREATE TABLE wll_eatery (
     e_address VARCHAR(255)
 );
 
-CREATE TABLE wll_ratings (
+CREATE TABLE wll_rating (
 	r_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	r_date TIMESTAMP,
 	r_value TINYINT UNSIGNED,
@@ -23,7 +23,7 @@ CREATE TABLE wll_ratings (
     FOREIGN KEY (d_id) REFERENCES wll_diner(d_id)
 );
 
-CREATE TABLE wll_comments (
+CREATE TABLE wll_comment (
 	c_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	c_date TIMESTAMP,
 	c_value VARCHAR(255),
