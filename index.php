@@ -14,6 +14,7 @@
 						padding-bottom: 20px;
 				}
 				legend { border-width: 0px; }
+				#eatery_list { max-height: 500px; }
 		</style>
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/main.css">
@@ -59,57 +60,8 @@
 					</ul>
 
 					<div class="tab-content">
-						<div id="review" class="tab-pane fade in active">
-							<form class="form-horizontal" >
-								<fieldset>
-
-									<!-- Form Name -->
-									<legend></legend>
-
-									<!-- Text input-->
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="email">Email</label>	
-										<div class="col-md-5">
-											<input id="email" name="email" type="text" placeholder="someone@poolsupplyworld.com" class="form-control input-md" required="">
-											
-										</div>
-									</div>
-
-									<!-- Password input-->
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="pass">Password</label>
-										<div class="col-md-5">
-											<input id="pass" name="pass" type="password" placeholder="********" class="form-control input-md" required="">
-										</div>
-									</div>
-
-									<!-- Button (Double) -->
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="thumbsup">Rating</label>
-										<div class="col-md-8">
-											<button id="thumbsup" name="thumbsup" class="btn btn-success">ThumbsUp</button>
-											<button id="thumbsdown" name="thumbsdown" class="btn btn-danger">ThumbsDown</button>
-										</div>
-									</div>
-
-									<!-- Textarea -->
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="comment">Comment</label>
-										<div class="col-md-5">										 
-											<textarea class="form-control" id="comment" name="comment"></textarea>
-										</div>
-									</div>
-
-									<!-- Button -->
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="add_comment"></label>
-										<div class="col-md-5">
-											<button id="add_comment" name="add_comment" class="btn btn-primary">Add Comment</button>
-										</div>
-									</div>
-
-								</fieldset>
-							</form>
+						<div id="eatery_review" class="tab-pane fade in active">
+							<span class="initial_message">Select Eatery from the List</span>
 						</div>
 						<div id="diner" class="tab-pane fade">
 							<form class="form-horizontal">
@@ -207,14 +159,15 @@
 				</div>
 				<div class="col-md-6">
 					<div class="table-responsive">
-						<table class="table" style="table-layout:fixed; margin-bottom:0;">
+						<table class="table" >
 							<thead>
 								<tr>
-									<th>Eatery</th>
-									<th>Address</th>
-									<th>Map</th>
-									<th>Up<br>Votes</th>
-									<th>Down<br>Votes</th>
+									<th class="col-md-2">Eatery</th>
+									<th class="col-md-4">Address</th>
+									<th class="col-md-3">Map</th>
+									<th class="col-md-1"><span class="halflings halflings-thumbs-up"></span></span></th>
+									<th class="col-md-1"><span class="halflings halflings-thumbs-down"></span></th>
+									<th class="col-md-1"><span class="halflings halflings-comments"></span></th>
 								</tr>
 							</thead>
 						</table>
@@ -235,12 +188,17 @@
 		<script src="js/vendor/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
 		<script>
-			function getEateryList(){
-				$( "#eatery_list" ).load( "./api/get_list.php");
+			function loadEateryList(){
+				$( "#eatery_list" ).load( "./api/?func=build_eatery_list");
 			}
 			$( function(){
-				getEateryList();
+				loadEateryList();
 			});
+
+			function loadEatery( $eid ){
+				$( "#eatery_review" ).load( "./api/?func=build_eatery&eid=" + $eid );
+
+			}
 		</script>
 
 	</body>

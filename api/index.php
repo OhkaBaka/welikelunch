@@ -7,9 +7,6 @@ include_once("../dBug.php");
 include_once("wll_queries.php");
 include_once("wll_structures.php");
 
-$bobby = 'robert\'); DROP TABLE students;<script>alert(\'Bobby\');</script>';
-
-
 $called_func = "none";
 if( isset( $_GET['func'] ) ){
 	$called_func = $_GET['func'];
@@ -25,13 +22,39 @@ switch ( $called_func ) {
 		break;
 	case 'add_eatery':
 		$email = $_GET['email'];
-		$pass1 = $_GET['pass1'];
+		$pass = $_GET['pass'];
 		$name = $_GET['name'];
 		$address = $_GET['address'];;
+		print add_eatery( $email, $pass, $name, $address );
 		break;
 	case 'add_comment':
+		$email = $_GET['email'];
+		$pass = $_GET['pass'];
+		$eid = $_GET['eid'];
+		$comment = $_GET['comment'];;
+		print add_comment( $email, $pass, $eid, $comment );
+		break;
+	case 'add_rating':
+		$email = $_GET['email'];
+		$pass = $_GET['pass'];
+		$eid = $_GET['eid'];
+		$rating = $_GET['rating'];;
+		print add_comment( $email, $pass, $eid, $rating );
+		break;
+	case 'build_eatery_list':
+		print build_eatery_list();
+		break;
+	case 'build_comments':
+		$eid = $_GET['eid'];
+		print build_comments( $eid );
+		break;
+	case 'build_eatery':
+		$eid = $_GET['eid'];
+		print build_eatery( $eid );
 		break;
 	default:
+		runTests();
+		break;
 }
 
 
@@ -42,7 +65,8 @@ switch ( $called_func ) {
 
 
 function runTests(){
-	global $bobby;
+	//Set Bobby Tables to a variable
+	$bobby = 'robert\'); DROP TABLE students;<script>alert(\'Bobby\');</script>';
 	// TEST ADD DINER
 	print 'Testing add_diner: <br>';
 		//Valid
@@ -111,5 +135,3 @@ function runTests(){
 		//Valid
 		new dBug( get_eatery_list( ) );
 }
-
-print runTests();
