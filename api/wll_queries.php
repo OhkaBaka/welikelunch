@@ -7,7 +7,7 @@ if( !isset( $sql_host ) ) $sql_host = "localhost";
 if( !isset( $sql_user ) ) $sql_user = "root";
 if( !isset( $sql_pass ) ) $sql_pass = "";
 if( !isset( $sql_db ) ) $sql_db = "welikelunch";
-if( !isset( $email_domains ) ) $email_domains = ['poolsupplyworld.com'];
+if( !isset( $email_domains ) ) $email_domains = array( 'poolsupplyworld.com');
 //
 $mysqli = new mysqli($sql_host,$sql_user,$sql_pass,$sql_db);
 
