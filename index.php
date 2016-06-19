@@ -14,7 +14,8 @@
 						padding-bottom: 20px;
 				}
 				legend { border-width: 0px; }
-				#eatery_list { max-height: 500px; }
+				#eatery_list { max-height: 500px; overflow-y: auto; }
+				#comment_list { max-height: 500px; overflow-y: auto; }
 		</style>
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/main.css">
