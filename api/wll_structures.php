@@ -8,10 +8,10 @@ function build_eatery_list(){
 	foreach($eatery_data as $eatery){
 		$eatery_row = '<tr data-eid="' . $eatery['eid'] . '"><td class="col-md-2 eatery_link" onclick="loadEatery(\'' . $eatery['eid'] . '\');">' . htmlentities( $eatery['eatery'] ) . '</td>';
 		$eatery_row .= '<td class="col-md-4">' . htmlentities( $eatery['address'] ) . '</td>';
-		$eatery_row .= '<td class="col-md-3"><a target="_blank" href="https://www.google.com/maps/place/' . urlencode( $eatery['address'] ) . '">';
-		$eatery_row .= '<img src="http://maps.googleapis.com/maps/api/staticmap?markers=color:red|' . urlencode( $eatery['address'] ) . '&size=100x100&zoom=13&key=ABQIAAAAvwR4dZG84g_plzGO1oAx9BRFvf734m_1IckaSObe5rel7hil9RR9SqeNV8FaFxAHjh75woIeU0g4vQ"></a></td>';
-		$eatery_row .= '<td class="succes col-md-1">' . $eatery['thumbsup'] . '</td>';
+		$eatery_row .= '<td class="col-md-3"><a target="_blank" href="https://www.google.com/maps/search/' . urlencode( $eatery['address'] ) . '">';
+		$eatery_row .= '<img src="http://maps.googleapis.com/maps/api/staticmap?markers=color:red|' . urlencode( $eatery['address'] ) . '&markers=color:green|2005+E+Indian+School+Rd+Ste+100,+Phoenix,+AZ+85016&size=100x100&key=ABQIAAAAvwR4dZG84g_plzGO1oAx9BRFvf734m_1IckaSObe5rel7hil9RR9SqeNV8FaFxAHjh75woIeU0g4vQ"></a></td>';
 		$eatery_row .= '<td class="danger col-md-1">' . $eatery['thumbsdown'] . '</td>';
+		$eatery_row .= '<td class="succes col-md-1">' . $eatery['thumbsup'] . '</td>';
 		$eatery_row .= '<td class="comments col-md-1">' . $eatery['commentcount'] . '</td></tr>';
 		$eatery_table .= $eatery_row;
 	}
@@ -27,16 +27,15 @@ function build_eatery( $eid ){
 
 	$eatery_info_code = '<div id="eateryabout">';
 	$eatery_info_code .= '	<span class="eateryname">' . htmlentities($eatery['eatery']) . '</span>';
-	$eatery_info_code .= '	<a class="eateryaddress" target="_blank" href="http://maps.google.com/place/' . urlencode($eatery['address']) . '">' . htmlentities($eatery['address']) . '<br>';
-	$eatery_info_code .= '		<img src="http://maps.googleapis.com/maps/api/staticmap?markers=color:red|' . urlencode($eatery['address']) . '&size=300x300&zoom=15&key=ABQIAAAAvwR4dZG84g_plzGO1oAx9BRFvf734m_1IckaSObe5rel7hil9RR9SqeNV8FaFxAHjh75woIeU0g4vQ">';
+	$eatery_info_code .= '	<a class="eateryaddress" target="_blank" href="http://maps.google.com/search/' . urlencode($eatery['address']) . '">' . htmlentities($eatery['address']) . '<br>';
+	$eatery_info_code .= '		<img src="http://maps.googleapis.com/maps/api/staticmap?markers=color:red|' . urlencode($eatery['address']) . '&markers=color:green|2005+E+Indian+School+Rd+Ste+100,+Phoenix,+AZ+85016&size=300x300&key=ABQIAAAAvwR4dZG84g_plzGO1oAx9BRFvf734m_1IckaSObe5rel7hil9RR9SqeNV8FaFxAHjh75woIeU0g4vQ">';
 	$eatery_info_code .= '	</a>';
+	$eatery_info_code .= '	<span class="thumbsdowncount">' . $eatery['thumbsdown'] . '</span>';
+	$eatery_info_code .= '	<span class="thumbsupcount">' . $eatery['thumbsup'] . '</span>';
 	$eatery_info_code .= '</div>';
-	$comment_list_code = '<div id="comment_list">' . build_comments( $eid ) . '</div>';
-	$form_code = '<form class="form-horizontal" ><fieldset><legend></legend><input id="eid" name="eid" type="hidden" value="' . $eid . '"><div class="form-group"><label class="col-md-4 control-label" for="email">Email</label><div class="col-md-5"><input id="email" name="email" type="text" placeholder="someone@poolsupplyworld.com" class="form-control input-md" required=""></div></div><div class="form-group"><label class="col-md-4 control-label" for="pass">Password</label><div class="col-md-5"><input id="pass" name="pass" type="password" placeholder="********" class="form-control input-md" required=""></div></div><div class="form-group"><label class="col-md-4 control-label" for="thumbsup">Rating</label><div class="col-md-8"><button id="thumbsup" name="thumbsup" class="btn btn-success"><span class="glyphicon glyphicon-thumbsup"></button><button id="thumbsdown" name="thumbsdown" class="btn btn-danger"><span class="glyphicon glyphicon-thumbsdown"></span></button></div></div><div class="form-group"><label class="col-md-4 control-label" for="comment">Comment</label><div class="col-md-5"><textarea class="form-control" id="comment" name="comment"></textarea></div></div><div class="form-group"><label class="col-md-4 control-label" for="add_comment"></label><div class="col-md-5"><button id="add_comment" name="add_comment" class="btn btn-primary">Add Comment</button></div></div></fieldset></form>';
 
-	return $eatery_info_code . $comment_list_code . $form_code;
+	return $eatery_info_code ;
 }
-
 
 function build_comments( $eid){
 	$comment_data = get_comments( $eid );

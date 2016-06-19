@@ -63,7 +63,7 @@ function add_eatery( $email, $pass, $name, $address ){
 			if ( $result = $mysqli->query( "INSERT INTO wll_eatery SET e_name = '" . $name . "', e_address='" . $address . "';" ) ) {
 				return '{ "success":"Eatery was created." }';
 			}
-			return '{ "error":"Query Error." }';
+			return '{ "error":"Query Error. (INSERT INTO wll_eatery SET e_name = \'"' . $name . '"\', e_address=\'"' . $address . '"\';)" }';
 		}
 	}
 }
@@ -91,7 +91,7 @@ function add_comment( $email, $pass, $eid, $comment ){
 			if( $result = $mysqli->query( "INSERT INTO wll_comment SET e_id = " . $eid . ", d_id=" . $did . ", c_date = '" . $date . "', c_value = '" . $comment . "' ;" ) ){
 				return '{ "success":"Comment was added." }';
 			}
-			return '{ "error":"Query Error." }';
+			return '{ "error":"Query Error. (INSERT INTO wll_comment SET e_id = ' . $eid . ', d_id=' . $did . ', c_date = \'"' . $date . '"\', c_value = \'"' . $comment . '"\' ;)" }';
 		}
 		return '{ "error":"No eatery found." }';
 	}
@@ -105,9 +105,11 @@ function add_rating( $email, $pass, $eid, $rating ){
 	if( !$did ) return verify_diner($email, $pass);
 
 	//Make sure $eid is an integer
+	$eid = (int)$eid;
 	if( !is_int( $eid ) ) return '{ "error":"Eatery is invalid." }';
 
 	//Make sure rating is an integer
+	$rating = (int)$rating;
 	if( !is_int( $rating ) || $rating < 0 || $rating > 5 ) return '{ "error":"Rating is invalid." }';
 
 	// Get the date and time 

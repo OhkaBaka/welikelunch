@@ -50,3 +50,13 @@ Session 7 (Saturday Afternoon)
 	Got the Eatery list to trigger the load for the Eatery review. Woo!
 	Going to check it in prod to make sure everything is functioning, going to push code as well...
 	Next stop, MVP
+
+Session 8 (Sunday Afternoon)
+	M V P ... ahhh... took way too long to get here, but I worked cautiously and I'm surprisingly happy with the outcome.
+	Caveats:
+		- It looks like butt.  I'll keep tinkering on it for a bit to clean it up, glyphicons and whatnot... but it works as intended.
+		- Fewer bells and whistles than I imagined.
+		- The code got a little cowboy as I got closer to the finish line, though I fixed a few things I had set up yesterday that were just embarrassingly wrong.
+
+Session 8.1
+	Oooh ooh... I can put the office on the map WITH the restaurant to show its relative location... OK... NOW I'm going to go prettify
