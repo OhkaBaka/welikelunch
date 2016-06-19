@@ -158,6 +158,7 @@ function get_comments( $eid ){
 	global $mysqli;
 	$comments = array();
 	//Make sure $eid is an integer
+	$eid = (int)$eid;
 	if( !is_int( $eid ) ) return '{ "error":"Eatery is invalid." }';
 
 	/* lookup eatery */
@@ -174,7 +175,7 @@ function get_comments( $eid ){
 	return $comments;
 }
 
-function get_eatery_list(){
+function get_eatery_list( $eid=false ){
 	global $mysqli;
 	$eateries = array();
 
@@ -187,6 +188,7 @@ function get_eatery_list(){
     $eatery_list_query .= " LEFT JOIN ( ";
 	$eatery_list_query .= "	SELECT e_id, count( c_id ) AS commentcount FROM wll_comment c2 GROUP BY c2.e_id ";
 	$eatery_list_query .= ") c ON e.e_id = c.e_id ";
+	if( $eid )	$eatery_list_query .= "WHERE e.e_id = " . $eid . " ";
     $eatery_list_query .= "ORDER BY thumbsup DESC, commentcount DESC ";
 
 	$result = $mysqli->query( $eatery_list_query );
@@ -203,4 +205,5 @@ function get_eatery_list(){
 	}
 	return $eateries;
 }
+
 // $mysqli->close();

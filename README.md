@@ -44,3 +44,9 @@ Session 6 (Saturday Morning)
 	I didn't expect the testing of this to go so long, but I'm very satisfied with the results, the test setups helped me validate much and fix even more.  Moving on to build logic.
 
 Session 7 (Saturday Afternoon)
+	Built Eatery list builder, replaced the dummy on the main page, first component to be updated to the product properly. Woo!
+	Glyphicons are not behaving... have to circle back to this, don't wanna worry about it now.
+	Built the eatery review builder.
+	Got the Eatery list to trigger the load for the Eatery review. Woo!
+	Going to check it in prod to make sure everything is functioning, going to push code as well...
+	Next stop, MVP
