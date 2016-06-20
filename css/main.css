@@ -1,22 +1,25 @@
+body {
+		padding-top: 50px;
+		padding-bottom: 20px;
+		font: helvetica;
+		font-size: 12pt;
+}
+legend { border-width: 0px; }
+#eatery_list { max-height: 500px; overflow-y: auto; }
+#comment_list { max-height: 500px; overflow-y: auto; }
 
+.comment_text{ font-size: 14pt; font-style: italic; display: block; width:100%; }
+.comment_diner{ font-size: 10pt ;  font-weight: bold;}
+.comment_date{ font-size: 8pt ; color: gray; padding: 0 10px; }
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+.initial_message { font-size: 14pt; padding: 20px 0px; display: block; width:100%; text-align: center; color:orange;}
+.eateryname { font-size: 24pt; padding: 20px 0px; display: block; width:100%; text-align: center;}
+.eateryaddress { font-size: 14pt; display: block; width:100%; text-align: center;}
+.suggested{ font-size: 8pt; line-height: 8pt; color:gray; display: block; width:100%; text-align: right;}
+.thumbsuplist{ border: 1px darkgreen solid; width: 49%; background-color:lightgreen; text-align: right;display:inline;display:inline-block;}
+.thumbsdownlist{border: 1px darkred solid; width: 49%; background-color:pink; text-align: left;display:inline;display:inline-block;}
 
+.eatery_header{ font-size: 10pt; }
+.eatery_header .col-md-1 { font-size: 8pt; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.eatery_link{ cursor:pointer; font: 12pt; line-height: 20pt;font-weight: bold; }

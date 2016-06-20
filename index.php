@@ -8,19 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<style>
-				body {
-						padding-top: 50px;
-						padding-bottom: 20px;
-				}
-				legend { border-width: 0px; }
-				#eatery_list { max-height: 500px; overflow-y: auto; }
-				#comment_list { max-height: 500px; overflow-y: auto; }
 
-				.comment_text{ font: 14pt helvetica italic bold; display: block; width:100%; }
-				.comment_diner{ font: 10pt helvetica ; }
-				.comment_date{ font: 8pt helvetica; color: gray; }
-		</style>
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/main.css">
 
@@ -56,7 +44,7 @@
 		<div class="container">
 			<!-- Example row of columns -->
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-4">
 
 					<ul class="nav nav-tabs">
 						<li class="active"><a data-toggle="tab" href="#review">Review Eatery</a></li>
@@ -66,7 +54,7 @@
 
 					<div class="tab-content">
 						<div id="review" class="tab-pane fade in active">
-							<div id="eatery_details"
+							<div id="eatery_details" >
 								<span class="initial_message">Select Eatery from the List</span>
 							</div>
 							<div id="comment_list"></div>
@@ -203,22 +191,23 @@
 
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<div class="table-responsive">
-						<table class="table" >
+						<table class="table eatery_header" >
 							<thead>
 								<tr>
-									<th class="col-md-2">Eatery</th>
-									<th class="col-md-4">Address</th>
-									<th class="col-md-3">Map</th>
-									<th class="col-md-1"><span class="glyphicons glyphicons-thumbs-up"></span></span></th>
-									<th class="col-md-1"><span class="glyphicons glyphicons-thumbs-down"></span></th>
-									<th class="col-md-1"><span class="glyphicons glyphicons-comments"></span></th>
+									<th class="col-md-3">Eatery</th>
+									<th class="col-md-3">Address</th>
+									<th class="col-md-2">Suggested by</th>
+									<th class="col-md-2">Map</th>
+									<th class="col-md-1"><span class="glyphicons glyphicons-thumbs-up"></span>Up</th>
+									<th class="col-md-1"><span class="glyphicons glyphicons-thumbs-down"></span>Down</th>
+									<th class="col-md-1"><span class="glyphicons glyphicons-comments"></span>Comments</th>
 								</tr>
 							</thead>
 						</table>
-						<div id="eatery_list">
-						</div>
+					</div>
+					<div class="table-responsive" id="eatery_list">
 					</div>
 				</div>
 			</div>

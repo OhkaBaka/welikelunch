@@ -60,10 +60,10 @@ function add_eatery( $email, $pass, $name, $address ){
 			return '{ "error":"Eatery already exists." }';
 		} else {
 			/* otherwise save the user and return confirmation */
-			if ( $result = $mysqli->query( "INSERT INTO wll_eatery SET e_name = '" . $name . "', e_address='" . $address . "', d_diner='" . $did . "';" ) ) {
+			if ( $result = $mysqli->query( "INSERT INTO wll_eatery SET e_name = '" . $name . "', e_address='" . $address . "', d_id=" . $did . ";" ) ) {
 				return '{ "success":"Eatery was created." }';
 			}
-			return '{ "error":"Query Error. (INSERT INTO wll_eatery SET e_name = \'"' . $name . '"\', e_address=\'"' . $address . '"\';)" }';
+			return '{ "error":"Query Error. (INSERT INTO wll_eatery SET e_name = \'' . $name . '\', e_address=\'' . $address . '\', d_id=' . $did . '; )" }';
 		}
 	}
 }
