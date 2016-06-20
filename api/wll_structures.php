@@ -32,8 +32,8 @@ function build_eatery( $eid ){
 	$eatery_info_code .= '		<img src="http://maps.googleapis.com/maps/api/staticmap?markers=color:red|' . urlencode($eatery['address']) . '&markers=color:green|2005+E+Indian+School+Rd+Ste+100,+Phoenix,+AZ+85016&size=300x300&key=ABQIAAAAvwR4dZG84g_plzGO1oAx9BRFvf734m_1IckaSObe5rel7hil9RR9SqeNV8FaFxAHjh75woIeU0g4vQ">';
 	$eatery_info_code .= '	</a>';
 	$eatery_info_code .= '	<span class="suggested">suggested by ' . $eatery['suggester'] . '</span>';
-	$eatery_info_code .= '	<span class="thumbsdowncount">' . $eatery['thumbsdown'] . '</span>';
-	$eatery_info_code .= '	<span class="thumbsupcount">' . $eatery['thumbsup'] . '</span>';
+	$eatery_info_code .= '	<span class="thumbsdownlist">Disliked By:' . $eatery['downlistlist'] . '</span>';
+	$eatery_info_code .= '	<span class="thumbsuplist">Liked By:' . $eatery['uplist'] . '</span>';
 	$eatery_info_code .= '</div>';
 
 	return $eatery_info_code ;

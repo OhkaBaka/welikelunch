@@ -91,7 +91,7 @@ function add_comment( $email, $pass, $eid, $comment ){
 			if( $result = $mysqli->query( "INSERT INTO wll_comment SET e_id = " . $eid . ", d_id=" . $did . ", c_date = '" . $date . "', c_value = '" . $comment . "' ;" ) ){
 				return '{ "success":"Comment was added." }';
 			}
-			return '{ "error":"Query Error. (INSERT INTO wll_comment SET e_id = ' . $eid . ', d_id=' . $did . ', c_date = \'"' . $date . '"\', c_value = \'"' . $comment . '"\' ;)" }';
+			return '{ "error":"Query Error." }';
 		}
 		return '{ "error":"No eatery found." }';
 	}
@@ -100,6 +100,7 @@ function add_comment( $email, $pass, $eid, $comment ){
 //Add a rating to an eatery
 function add_rating( $email, $pass, $eid, $rating ){
 	global $mysqli;
+
 	//Verify Diner
 	$did = verify_diner($email, $pass, true);
 	if( !$did ) return verify_diner($email, $pass);
@@ -123,7 +124,7 @@ function add_rating( $email, $pass, $eid, $rating ){
 			if ( $result = $mysqli->query( "INSERT INTO wll_rating SET e_id = " . $eid . ", d_id = " . $did . ", r_date = '" . $date . "', r_value = " . $rating . " ;" ) ) {
 				return '{ "success":"Rating was added." }';
 			}
-			return '{ "error":"Query Error." }';
+			return '{ "error":"Query Error.(INSERT INTO wll_rating SET e_id = "' . $eid . '", d_id = "' . $did . '", r_date = \'"' . $date . '"\', r_value = "' . $rating . ' ;)" }';
 		}
 		return '{ "error":"No eatery found." }';
 	}
@@ -152,7 +153,7 @@ function verify_diner( $email, $pass, $did_response=false){
 		}
 	}
 	if( $did_response ) return false;
-	return '{ "error":"Query Failure." }';
+	return '{ "error":"Unknown User." }';
 }
 
 // Get comments into a PHP array
@@ -181,16 +182,34 @@ function get_eatery_list( $eid=false ){
 	global $mysqli;
 	$eateries = array();
 
-	$eatery_list_query = "SELECT e.e_id, e_name, e_address, d_name, thumbsdown, thumbsup, commentcount ";
+	$eatery_list_query = "SELECT e.e_id, e_name, e_address, d_name, thumbsdown, thumbsup, commentcount, uplist, downlist ";
 	$eatery_list_query .= "FROM wll_eatery e ";
 	$eatery_list_query .= "INNER JOIN wll_diner d ON e.d_id = d.d_id ";
-    $eatery_list_query .= "LEFT JOIN ( ";
+	$eatery_list_query .= "LEFT JOIN ( ";
 	$eatery_list_query .= "	SELECT e_id, SUM(case when r_value = 0 then 1 else 0 end) AS thumbsdown, SUM(case when r_value = 5 then 1 else 0 end) AS thumbsup ";
-    $eatery_list_query .= "    FROM wll_rating r2 GROUP BY r2.e_id ";
-    $eatery_list_query .= ") r ON e.e_id = r.e_id ";
-    $eatery_list_query .= " LEFT JOIN ( ";
+	$eatery_list_query .= "	FROM wll_rating r2 GROUP BY r2.e_id ";
+	$eatery_list_query .= ") r ON e.e_id = r.e_id ";
+	$eatery_list_query .= " LEFT JOIN ( ";
 	$eatery_list_query .= "	SELECT e_id, count( c_id ) AS commentcount FROM wll_comment c2 GROUP BY c2.e_id ";
 	$eatery_list_query .= ") c ON e.e_id = c.e_id ";
+    $eatery_list_query .= "LEFT JOIN ( ";
+	$eatery_list_query .= "	SELECT GROUP_CONCAT(d.d_name) AS uplist, r.e_id FROM wll_rating r ";
+	$eatery_list_query .= "	INNER JOIN ( ";
+	$eatery_list_query .= "		SELECT d_id, e_id, max( r_date ) AS r_recent FROM wll_rating GROUP BY e_id, d_id ";
+	$eatery_list_query .= "	) r2 ON r.d_id=r2.d_id AND r.e_id=r2.e_id AND r.r_date = r2.r_recent ";
+	$eatery_list_query .= "	INNER JOIN wll_diner d ON r.d_id = d.d_id ";
+    $eatery_list_query .= "    WHERE r.r_value = 5 ";
+	$eatery_list_query .= "	GROUP BY r.e_id ";
+	$eatery_list_query .= ") ul ON ul.e_id = e.e_id ";
+    $eatery_list_query .= "LEFT JOIN ( ";
+	$eatery_list_query .= "	SELECT GROUP_CONCAT(d.d_name) AS downlist, r.e_id FROM wll_rating r ";
+	$eatery_list_query .= "	INNER JOIN ( ";
+	$eatery_list_query .= "		SELECT d_id, e_id, max( r_date ) AS r_recent FROM wll_rating GROUP BY e_id, d_id ";
+	$eatery_list_query .= "	) r2 ON r.d_id=r2.d_id AND r.e_id=r2.e_id AND r.r_date = r2.r_recent ";
+	$eatery_list_query .= "	INNER JOIN wll_diner d ON r.d_id = d.d_id ";
+    $eatery_list_query .= "    WHERE r.r_value = 0 ";
+	$eatery_list_query .= "	GROUP BY r.e_id ";
+	$eatery_list_query .= ") dl ON dl.e_id = e.e_id ";
 	if( $eid )	$eatery_list_query .= "WHERE e.e_id = " . $eid . " ";
     $eatery_list_query .= "ORDER BY thumbsup DESC, commentcount DESC ";
 
@@ -205,6 +224,8 @@ function get_eatery_list( $eid=false ){
 		$eatery_list_object[ 'thumbsdown' ] = $eatery_row[4];
 		$eatery_list_object[ 'thumbsup' ] = $eatery_row[5];
 		$eatery_list_object[ 'commentcount' ] = $eatery_row[6];
+		$eatery_list_object[ 'uplist' ] = $eatery_row[7];
+		$eatery_list_object[ 'downlist' ] = $eatery_row[8];
 		$eateries[] = $eatery_list_object;
 	}
 	return $eateries;

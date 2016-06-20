@@ -38,7 +38,7 @@ switch ( $called_func ) {
 		$email = $_GET['email'];
 		$pass = $_GET['pass'];
 		$eid = $_GET['eid'];
-		$rating = $_GET['rating'];;
+		$rating = $_GET['rating'];
 		print add_rating( $email, $pass, $eid, $rating );
 		break;
 	case 'build_eatery_list':
