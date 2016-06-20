@@ -8,6 +8,7 @@ function build_eatery_list(){
 	foreach($eatery_data as $eatery){
 		$eatery_row = '<tr data-eid="' . $eatery['eid'] . '"><td class="col-md-2 eatery_link" onclick="loadEatery(\'' . $eatery['eid'] . '\');">' . htmlentities( $eatery['eatery'] ) . '</td>';
 		$eatery_row .= '<td class="col-md-4">' . htmlentities( $eatery['address'] ) . '</td>';
+		$eatery_row .= '<td class="col-md-4">' . $eatery['suggester'] . '</td>';
 		$eatery_row .= '<td class="col-md-3"><a target="_blank" href="https://www.google.com/maps/search/' . urlencode( $eatery['address'] ) . '">';
 		$eatery_row .= '<img src="http://maps.googleapis.com/maps/api/staticmap?markers=color:red|' . urlencode( $eatery['address'] ) . '&markers=color:green|2005+E+Indian+School+Rd+Ste+100,+Phoenix,+AZ+85016&size=100x100&key=ABQIAAAAvwR4dZG84g_plzGO1oAx9BRFvf734m_1IckaSObe5rel7hil9RR9SqeNV8FaFxAHjh75woIeU0g4vQ"></a></td>';
 		$eatery_row .= '<td class="danger col-md-1">' . $eatery['thumbsdown'] . '</td>';
@@ -30,6 +31,7 @@ function build_eatery( $eid ){
 	$eatery_info_code .= '	<a class="eateryaddress" target="_blank" href="http://maps.google.com/search/' . urlencode($eatery['address']) . '">' . htmlentities($eatery['address']) . '<br>';
 	$eatery_info_code .= '		<img src="http://maps.googleapis.com/maps/api/staticmap?markers=color:red|' . urlencode($eatery['address']) . '&markers=color:green|2005+E+Indian+School+Rd+Ste+100,+Phoenix,+AZ+85016&size=300x300&key=ABQIAAAAvwR4dZG84g_plzGO1oAx9BRFvf734m_1IckaSObe5rel7hil9RR9SqeNV8FaFxAHjh75woIeU0g4vQ">';
 	$eatery_info_code .= '	</a>';
+	$eatery_info_code .= '	<span class="suggested">suggested by ' . $eatery['suggester'] . '</span>';
 	$eatery_info_code .= '	<span class="thumbsdowncount">' . $eatery['thumbsdown'] . '</span>';
 	$eatery_info_code .= '	<span class="thumbsupcount">' . $eatery['thumbsup'] . '</span>';
 	$eatery_info_code .= '</div>';

@@ -10,7 +10,9 @@ CREATE TABLE wll_diner (
 CREATE TABLE wll_eatery (
 	e_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	e_name VARCHAR(64) NOT NULL,
-    e_address VARCHAR(255)
+    e_address VARCHAR(255),
+    d_id INT,
+    FOREIGN KEY (d_id) REFERENCES wll_diner(d_id)
 );
 
 CREATE TABLE wll_rating (

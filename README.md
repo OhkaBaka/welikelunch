@@ -60,3 +60,7 @@ Session 8 (Sunday Afternoon)
 
 Session 8.1
 	Oooh ooh... I can put the office on the map WITH the restaurant to show its relative location... OK... NOW I'm going to go prettify
+
+Session 8.2
+	Oh look... you can't see who suggested a place (fixed)
+

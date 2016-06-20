@@ -60,7 +60,7 @@ function add_eatery( $email, $pass, $name, $address ){
 			return '{ "error":"Eatery already exists." }';
 		} else {
 			/* otherwise save the user and return confirmation */
-			if ( $result = $mysqli->query( "INSERT INTO wll_eatery SET e_name = '" . $name . "', e_address='" . $address . "';" ) ) {
+			if ( $result = $mysqli->query( "INSERT INTO wll_eatery SET e_name = '" . $name . "', e_address='" . $address . "', d_diner='" . $did . "';" ) ) {
 				return '{ "success":"Eatery was created." }';
 			}
 			return '{ "error":"Query Error. (INSERT INTO wll_eatery SET e_name = \'"' . $name . '"\', e_address=\'"' . $address . '"\';)" }';
@@ -181,8 +181,9 @@ function get_eatery_list( $eid=false ){
 	global $mysqli;
 	$eateries = array();
 
-	$eatery_list_query = "SELECT e.e_id, e_name, e_address, thumbsdown, thumbsup, commentcount ";
+	$eatery_list_query = "SELECT e.e_id, e_name, e_address, d_name, thumbsdown, thumbsup, commentcount ";
 	$eatery_list_query .= "FROM wll_eatery e ";
+	$eatery_list_query .= "INNER JOIN wll_diner d ON e.d_id = d.d_id ";
     $eatery_list_query .= "LEFT JOIN ( ";
 	$eatery_list_query .= "	SELECT e_id, SUM(case when r_value = 0 then 1 else 0 end) AS thumbsdown, SUM(case when r_value = 5 then 1 else 0 end) AS thumbsup ";
     $eatery_list_query .= "    FROM wll_rating r2 GROUP BY r2.e_id ";
@@ -200,9 +201,10 @@ function get_eatery_list( $eid=false ){
 		$eatery_list_object[ 'eid' ] = $eatery_row[0];
 		$eatery_list_object[ 'eatery' ] = $eatery_row[1];
 		$eatery_list_object[ 'address' ] = $eatery_row[2];
-		$eatery_list_object[ 'thumbsdown' ] = $eatery_row[3];
-		$eatery_list_object[ 'thumbsup' ] = $eatery_row[4];
-		$eatery_list_object[ 'commentcount' ] = $eatery_row[5];
+		$eatery_list_object[ 'suggester' ] = $eatery_row[3];
+		$eatery_list_object[ 'thumbsdown' ] = $eatery_row[4];
+		$eatery_list_object[ 'thumbsup' ] = $eatery_row[5];
+		$eatery_list_object[ 'commentcount' ] = $eatery_row[6];
 		$eateries[] = $eatery_list_object;
 	}
 	return $eateries;
