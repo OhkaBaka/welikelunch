@@ -16,6 +16,10 @@
 				legend { border-width: 0px; }
 				#eatery_list { max-height: 500px; overflow-y: auto; }
 				#comment_list { max-height: 500px; overflow-y: auto; }
+
+				.comment_text{ font: 14pt helvetica italic bold; display: block; width:100%; }
+				.comment_diner{ font: 10pt helvetica ; }
+				.comment_date{ font: 8pt helvetica; color: gray; }
 		</style>
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/main.css">
