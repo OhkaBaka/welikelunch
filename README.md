@@ -64,8 +64,12 @@ Session 8.1
 Session 8.2
 	Oh look... you can't see who suggested a place (fixed)
 
+Session 8.2b
+	Game of Thrones just happened.
+
 Session 8.3
 	...or who rated the restaurant.  This one is interesting because you can rate a restaurant multiple times.
 
 Session 8.4
 	Testing revealed a couple more bugs.
+
