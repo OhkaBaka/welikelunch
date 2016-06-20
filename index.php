@@ -37,7 +37,10 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1>WeLikeLunch</h1>
-				<p style="display:none;">This space intentionally left blank, I wasn't planning to put ANYTHING cool in here.</p>
+				<p class="howtouse">Welcome to WeLikeLunch. If this is your first time, create a user under the "Add User" tab.</p>
+				<p class="howtouse">To rate an Eatery, enter your email and password and select the rating you wish to give.</p>
+				<p class="howtouse">To comment on an Eatery, enter your email and password and enter a comment in the field.</p>
+				<p class="howtouse">To add an Eatery, click the "Add Eatery" tab enter your email and password and enter a comment in the field.</p>
 			</div>
 		</div>
 
@@ -48,7 +51,7 @@
 
 					<ul class="nav nav-tabs">
 						<li class="active"><a data-toggle="tab" href="#review">Review Eatery</a></li>
-						<li><a data-toggle="tab" href="#diner">Add Diner</a></li>
+						<li><a data-toggle="tab" href="#diner">Add User</a></li>
 						<li><a data-toggle="tab" href="#eatery">Add Eatery</a></li>
 					</ul>
 
@@ -64,11 +67,11 @@
 									<input id="eid" name="eid" type="hidden" value="">
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="email">Email</label>
-										<div class="col-md-5"><input id="email" name="email" type="text" placeholder="someone@poolsupplyworld.com" class="form-control input-md" required=""></div>
+										<div class="col-md-6"><input id="email" name="email" type="text" placeholder="someone@poolsupplyworld.com" class="form-control input-md" required=""></div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="pass">Password</label>
-										<div class="col-md-5"><input id="pass" name="pass" type="password" placeholder="********" class="form-control input-md" required=""></div>
+										<div class="col-md-6"><input id="pass" name="pass" type="password" placeholder="********" class="form-control input-md" required=""></div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="thumbsup">Rating</label>
@@ -79,11 +82,11 @@
 									</div>
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="comment">Comment</label>
-										<div class="col-md-5"><textarea class="form-control" id="comment" name="comment"></textarea></div>
+										<div class="col-md-6"><textarea class="form-control" id="comment" name="comment"></textarea></div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="add_comment"></label>
-										<div class="col-md-5"><button id="add_comment" name="add_comment" class="btn btn-primary">Add Comment</button></div>
+										<div class="col-md-6"><button id="add_comment" name="add_comment" class="btn btn-primary">Add Comment</button></div>
 									</div>
 								</fieldset>
 							</form>
@@ -98,7 +101,7 @@
 									<!-- Text input-->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="name">Name</label>	
-										<div class="col-md-5">
+										<div class="col-md-6">
 										<input id="d_name" name="d_name" type="text" placeholder="NomNomNom" class="form-control input-md" required="">
 											
 										</div>
@@ -107,7 +110,7 @@
 									<!-- Text input-->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="email">Email Address</label>	
-										<div class="col-md-5">
+										<div class="col-md-6">
 										<input id="d_email" name="d_email" type="text" placeholder="someone@poolsupplyworld.com" class="form-control input-md" required="">
 											
 										</div>
@@ -116,7 +119,7 @@
 									<!-- Password input-->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="pass1">Password</label>
-										<div class="col-md-5">
+										<div class="col-md-6">
 											<input id="d_pass1" name="d_pass1" type="password" placeholder="" class="form-control input-md">
 											
 										</div>
@@ -125,7 +128,7 @@
 									<!-- Password input-->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="pass2">Re-Enter Password</label>
-										<div class="col-md-5">
+										<div class="col-md-6">
 											<input id="d_pass2" name="d_pass2" type="password" placeholder="" class="form-control input-md">
 											
 										</div>
@@ -134,7 +137,7 @@
 									<!-- Button -->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="submit"></label>
-										<div class="col-md-5">
+										<div class="col-md-6">
 											<button id="d_create" name="d_create" class="btn btn-primary">Create</button>
 										</div>
 									</div>
@@ -152,17 +155,17 @@
 
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="email">Email</label>
-										<div class="col-md-5"><input id="e_email" name="e_email" type="text" placeholder="someone@poolsupplyworld.com" class="form-control input-md" required=""></div>
+										<div class="col-md-6"><input id="e_email" name="e_email" type="text" placeholder="someone@poolsupplyworld.com" class="form-control input-md" required=""></div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="pass">Password</label>
-										<div class="col-md-5"><input id="e_pass" name="e_pass" type="password" placeholder="********" class="form-control input-md" required=""></div>
+										<div class="col-md-6"><input id="e_pass" name="e_pass" type="password" placeholder="********" class="form-control input-md" required=""></div>
 									</div>
 
 									<!-- Text input-->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="name">Eatery Name</label>	
-										<div class="col-md-5">
+										<div class="col-md-6">
 										<input id="e_name" name="e_name" type="text" placeholder="" class="form-control input-md" required="">
 											
 										</div>
@@ -171,7 +174,7 @@
 									<!-- Text input-->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="address">Address</label>	
-										<div class="col-md-5">
+										<div class="col-md-6">
 										<input id="e_address" name="e_address" type="text" placeholder="" class="form-control input-md" required="">
 											
 										</div>
@@ -180,7 +183,7 @@
 									<!-- Button -->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="create"></label>
-										<div class="col-md-5">
+										<div class="col-md-6">
 											<button id="e_create" name="e_create" class="btn btn-primary">Create</button>
 										</div>
 									</div>
@@ -293,7 +296,6 @@
 					success : function(resp){
 						if( resp['success']) {
 							alert( resp['success'] );
-							$('#comment').val("");
 							loadEateryList();
 							loadEatery( $("#eid").val()  );
 						} else {

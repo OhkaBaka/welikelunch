@@ -66,3 +66,6 @@ Session 8.2
 
 Session 8.3
 	...or who rated the restaurant.  This one is interesting because you can rate a restaurant multiple times.
+
+Session 8.4
+	Testing revealed a couple more bugs.

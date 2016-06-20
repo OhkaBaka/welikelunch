@@ -23,3 +23,5 @@ legend { border-width: 0px; }
 .eatery_header .col-md-1 { font-size: 8pt; }
 
 .eatery_link{ cursor:pointer; font: 12pt; line-height: 20pt;font-weight: bold; }
+
+#comment_list { margin:5px 2px; padding: 5px 2px; border: 1px solid black; }
